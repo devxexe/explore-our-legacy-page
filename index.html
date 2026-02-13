@@ -3,329 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | Aatreya Academy</title>
+    <title>Leadership | Aatreya Academy</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/web-logo.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
     <style>
+        /* --- GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: #333; overflow-x: hidden; }
 
         /* --- NAV BAR --- */
         nav {
-            padding: 15px 8%;
+            padding: 15px 5%;
             background: #fff;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             display: flex;
-            align-items: center;
+            justify-content: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .nav-logo { height: 75px; width: auto; object-fit: contain; }
 
-        /* --- PRINCIPAL SECTION --- */
-        .principal-legacy {
-            padding: 60px 8%;
-            min-height: calc(100vh - 85px);
-            display: flex;
-            align-items: center;
-        }
-
-        .legacy-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        /* Left Side: Photo Frame */
-        .principal-visual { flex: 1; min-width: 350px; position: relative; }
-        
-        .image-frame {
-            position: relative;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-            background: #f0f0f0; 
-            aspect-ratio: 4/5;
+        /* --- SHARED SECTION STYLES --- */
+        .section-container {
+            padding: 80px 8%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-        .principal-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
         }
+        .bg-alt { background-color: #fafafa; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
 
-        .exp-badge {
+        /* --- IMAGE BOX STYLES --- */
+        .visual-box { flex: 1; min-width: 320px; position: relative; }
+        
+        .img-frame {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #f0f0f0;
+            aspect-ratio: 4/5;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Badges */
+        .badge {
             position: absolute;
-            bottom: 25px;
-            right: 25px;
-            background: #ff8c00;
+            bottom: 20px;
+            right: 20px;
             color: #fff;
-            padding: 15px 20px;
-            border-radius: 20px;
+            padding: 12px 18px;
+            border-radius: 18px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(255,140,0,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             z-index: 5;
         }
-        .exp-badge .num { font-size: 26px; font-weight: 800; display: block; line-height: 1; }
-        .exp-badge .txt { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .badge-maroon { background: #630000; }
+        .badge-orange { background: #ff8c00; }
+        .badge .num { font-size: 22px; font-weight: 800; display: block; line-height: 1; }
+        .badge .txt { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        .credentials-bar { display: flex; gap: 12px; margin-top: 25px; justify-content: center; }
+        /* Tags Below Image */
+        .tag-row { display: flex; gap: 10px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
         .tag {
-            background: #63000008;
+            background: #fff;
             color: #630000;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            border: 1.5px solid #63000015;
+            border: 1px solid #63000020;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        /* Right Side: Content */
-        .principal-bio { flex: 1.4; min-width: 380px; }
-        .mini-head { color: #ff8c00; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; font-size: 14px; }
-        .principal-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #1a1a1a; line-height: 1; margin: 0; }
-        .principal-name span { color: #630000; }
-        .role { font-size: 1.2rem; color: #666; font-weight: 600; margin: 15px 0 30px 0; border-left: 4px solid #ff8c00; padding-left: 15px; }
+        /* --- CONTENT STYLES --- */
+        .content-box { flex: 1.2; min-width: 320px; }
+        .mini-label { color: #ff8c00; font-weight: 800; letter-spacing: 2px; font-size: 13px; margin-bottom: 10px; text-transform: uppercase; }
+        .name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #1a1a1a; line-height: 1.1; }
+        .name span { color: #630000; }
+        .role-bar { 
+            font-size: 1.1rem; color: #666; font-weight: 600; 
+            margin: 15px 0 25px 0; border-left: 4px solid #ff8c00; padding-left: 15px; 
+        }
 
-        .bio-text { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 30px; }
+        .desc { font-size: 1.05rem; color: #444; line-height: 1.7; margin-bottom: 25px; }
         
-        .meta-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
-        
-        .philosophy-grid { display: flex; gap: 20px; }
-        .p-item { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333; font-size: 14px; }
-        .p-item i { color: #630000; }
+        /* Icons Row */
+        .meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+        .info-pts { display: flex; gap: 15px; font-weight: 700; font-size: 14px; }
+        .info-pts i { color: #630000; }
 
-        .social-links { display: flex; gap: 15px; }
-        .social-btn {
-            width: 45px; height: 45px; border-radius: 50%; background: #630000; color: #fff;
+        .social { display: flex; gap: 12px; }
+        .s-btn {
+            width: 40px; height: 40px; border-radius: 50%; background: #630000; color: #fff;
             display: flex; align-items: center; justify-content: center; text-decoration: none;
-            transition: 0.3s; font-size: 20px; box-shadow: 0 5px 15px rgba(99,0,0,0.2);
+            transition: 0.3s; font-size: 18px;
         }
-        .social-btn:hover { background: #ff8c00; transform: translateY(-5px); box-shadow: 0 8px 20px rgba(255,140,0,0.3); }
+        .s-btn:hover { background: #ff8c00; transform: translateY(-3px); }
 
-        .vision-quote {
-            background: #630000;
-            color: #fff;
-            padding: 35px;
-            border-radius: 25px;
-            font-size: 1.15rem;
-            font-style: italic;
-            line-height: 1.7;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(99,0,0,0.15);
+        .quote {
+            background: #630000; color: #fff; padding: 25px; border-radius: 20px;
+            font-size: 1.1rem; font-style: italic; line-height: 1.6;
         }
+        .quote-orange { background: #ff8c00; }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .legacy-container { flex-direction: column; text-align: center; }
-            .role { border-left: none; border-top: 3px solid #ff8c00; padding: 15px 0 0 0; }
-            .meta-info { justify-content: center; }
-            .exp-badge { position: relative; display: inline-block; top: -40px; right: 0; }
+        /* --- MOBILE RESPONSIVE FIXES --- */
+        @media (max-width: 768px) {
+            nav { padding: 10px; }
+            .nav-logo { height: 50px; }
+            .section-container { padding: 40px 5%; }
+            .wrapper { flex-direction: column !important; text-align: center; gap: 30px; }
+            
+            .img-frame { max-width: 280px; border-radius: 20px; }
+            .name { font-size: 2.2rem; }
+            .role-bar { border-left: none; border-top: 3px solid #ff8c00; padding: 10px 0 0 0; }
+            
+            .meta-row { justify-content: center; }
+            .info-pts { flex-direction: column; gap: 8px; }
+            .quote { padding: 20px; font-size: 1rem; }
         }
+        /* ANJU MAM END */
 
-        /* --- VICE PRINCIPAL SECTION STYLES (No Clash) --- */
-.vp-leadership-sec {
-    padding: 100px 8%;
-    background-color: #fafafa; /* Light grey background for distinction */
-    border-top: 1px solid #eee;
+/* KD SIR START */
+.teacher-profile-sec {
+    padding: 60px 8%;
+    background: #fff;
 }
 
-.vp-wrapper {
+.teacher-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: row-reverse; /* Desktop par image right side dikhegi */
-    align-items: center;
-    gap: 70px;
-    flex-wrap: wrap;
+    display: flex; /* Ye photo aur text ko side-by-side layega */
+    align-items: flex-start;
+    gap: 50px;
 }
 
-.vp-visual { flex: 1; min-width: 350px; position: relative; }
+/* Left Visuals */
+.teacher-visual {
+    flex: 1; /* 1 part space for photo */
+    min-width: 320px;
+}
 
-.vp-image-frame {
+.t-image-frame {
     position: relative;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-    background: #630000;
-    aspect-ratio: 4/5;
-}
-
-.vp-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.vp-athlete-badge {
-    position: absolute;
-    bottom: 25px;
-    left: 25px; /* Inka badge left mein rakha hai for style change */
-    background: #630000;
-    color: #fff;
-    padding: 15px 20px;
     border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(99,0,0,0.3);
-}
-.vp-rank { font-size: 24px; font-weight: 800; display: block; line-height: 1; }
-.vp-nation { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-.vp-credentials { display: flex; gap: 10px; margin-top: 25px; justify-content: center; }
-.vp-tag {
-    background: #ff8c0015;
-    color: #ff8c00;
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 700;
-    border: 1.5px solid #ff8c0030;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    aspect-ratio: 4/5;
+    background: #f0f0f0;
 }
 
-.vp-bio { flex: 1.4; min-width: 380px; }
-.vp-mini-head { color: #630000; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; font-size: 14px; }
-.vp-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #1a1a1a; line-height: 1.1; margin: 0; }
-.vp-name span { color: #ff8c00; }
-.vp-role { font-size: 1.2rem; color: #666; font-weight: 600; margin: 15px 0 30px 0; border-left: 4px solid #630000; padding-left: 15px; }
+.t-img { width: 100%; height: 100%; object-fit: cover; }
 
-.vp-bio-text { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 30px; }
-
-.vp-meta { margin-bottom: 30px; }
-.vp-points { display: flex; gap: 25px; flex-wrap: wrap; }
-.vp-points span { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333; font-size: 14px; }
-.vp-points i { color: #ff8c00; font-size: 18px; }
-
-.vp-quote {
+.t-exp-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     background: #ff8c00;
     color: #fff;
-    padding: 35px;
-    border-radius: 25px;
-    font-size: 1.15rem;
-    font-style: italic;
-    line-height: 1.7;
-    box-shadow: 0 20px 40px rgba(255,140,0,0.15);
+    padding: 12px 18px;
+    border-radius: 15px;
+    text-align: center;
+}
+.t-num { font-size: 18px; font-weight: 800; display: block; }
+.t-txt { font-size: 9px; letter-spacing: 1px; }
+
+.t-tags { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+.t-tag { background: #63000008; color: #630000; padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; border: 1px solid #63000015; }
+
+/* Right Details */
+.teacher-info {
+    flex: 1.5; /* 1.5 parts space for text */
 }
 
-/* Responsive Fix */
-@media (max-width: 992px) {
-    .vp-wrapper { flex-direction: column; text-align: center; }
-    .vp-role { border-left: none; border-top: 3px solid #630000; padding: 15px 0 0 0; }
-    .vp-points { justify-content: center; }
-    .vp-athlete-badge { position: relative; top: -40px; left: 0; display: inline-block; margin: 0 auto; }
+.t-mini-head { color: #ff8c00; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px; font-weight: 800; }
+.t-name { font-size: 3.5rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
+.t-name span { color: #630000; }
+.t-role { font-size: 1.1rem; color: #666; font-weight: 600; margin: 15px 0; border-left: 4px solid #ff8c00; padding-left: 15px; }
+
+.t-bio { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
+
+/* Skills Grid Fix */
+.t-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #eee;
 }
+
+.t-skill-box h5 { color: #630000; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.t-skill-box ul { list-style: none; }
+.t-skill-box li { font-size: 13px; color: #555; margin-bottom: 6px; padding-left: 15px; position: relative; }
+.t-skill-box li::before { content: "•"; color: #ff8c00; position: absolute; left: 0; font-weight: bold; }
+
+.t-vision-quote {
+    margin-top: 30px;
+    background: #630000;
+    color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .teacher-container { flex-direction: column; text-align: center; }
+    .t-role { border-left: none; border-top: 3px solid #ff8c00; padding: 15px 0 0; }
+    .t-skills-grid { grid-template-columns: 1fr; text-align: left; }
+}
+/* KD SIR END */
+
+
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="images/dark-logo.png" alt="Aatreya Academy Logo" class="nav-logo">
+        <img src="images/dark-logo.png" alt="Aatreya Logo" class="nav-logo">
     </nav>
 
-    <!-- PRINCIPLE START -->
-    <section class="principal-legacy">
-        <div class="legacy-container">
-            
-            <div class="principal-visual">
-                <div class="image-frame">
-                    <img src="images/anindya shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Principal+Photo'" alt="Anindya Shanker" class="principal-img">
-                    <div class="exp-badge">
+    <!-- ANINDYA SIR -->
+    <section class="section-container">
+        <div class="wrapper">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/anindya shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Principal'" class="main-img">
+                    <div class="badge badge-orange">
                         <span class="num">11+</span>
-                        <span class="txt">Years exp</span>
+                        <span class="txt">Years Exp</span>
                     </div>
                 </div>
-                <div class="credentials-bar">
+                <div class="tag-row">
                     <span class="tag">MBA</span>
                     <span class="tag">IIM Indore Alumnus</span>
                 </div>
             </div>
 
-            <div class="principal-bio">
-                <h4 class="mini-head">THE LEADERSHIP</h4>
-                <h1 class="principal-name">Anindya <span>Shanker</span></h1>
-                <p class="role">Principal & Chief Mentor | Psychology Specialist</p>
-                
-                <div class="bio-text">
-                    <p>Heading <strong>Aatreya Academy</strong> for the past 3 years, Anindya Shanker brings 11 years of rich experience in the education field. He is an advocate of <strong>Inclusive Teaching methods</strong> and has been deeply involved in mentoring kids through psychology.</p>
+            <div class="content-box">
+                <h4 class="mini-label">The Leadership</h4>
+                <h1 class="name">Anindya <span>Shanker</span></h1>
+                <p class="role-bar">Principal & Chief Mentor | Psychology Specialist</p>
+                <div class="desc">
+                    <p>Heading <strong>Aatreya Academy</strong> for the past 3 years, Anindya Shanker brings 11 years of rich experience. He is an advocate of inclusive teaching and deeply involved in mentoring kids.</p>
                 </div>
-
-                <div class="meta-info">
-                    <div class="philosophy-grid">
-                        <div class="p-item"><i class="fas fa-seedling"></i> Environmentalist</div>
-                        <div class="p-item"><i class="fas fa-brain"></i> Psychology Expert</div>
+                <div class="meta-row">
+                    <div class="info-pts">
+                        <span><i class="fas fa-leaf"></i> Environmentalist</span>
+                        <span><i class="fas fa-brain"></i> Psychology Expert</span>
                     </div>
-
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/anindya-shanker-2018bb228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-btn" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.instagram.com/shankeranindya/" class="social-btn" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/anindya-shanker-2018bb228" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/shankeranindya/" class="s-btn"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
-                <div class="vision-quote">
-                    "Kids need the <strong>right exposure</strong> rather than just a book. We focus on building character and minds for the future."
-                </div>
+                <div class="quote">"Kids need the right exposure rather than just a book. We focus on building character."</div>
             </div>
-
         </div>
     </section>
-    <!-- PRINCIPLE END -->
+    <!-- ANINDYA SIR -->
 
-    <!-- VICE PRINCIPLE SECTION START -->
-     <section class="vp-leadership-sec">
-    <div class="vp-wrapper">
-        
-        <div class="vp-visual">
-            <div class="vp-image-frame">
-                <img src="images/anju shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Vice+Principal+Photo'" class="vp-img">
-                <div class="vp-athlete-badge">
-                    <span class="vp-rank">Rank 2</span>
-                    <span class="vp-nation">India Athlete</span>
+    <!-- ANJU MAM -->
+    <section class="section-container bg-alt">
+        <div class="wrapper" style="flex-direction: row-reverse;">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/anju shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Vice+Principal'" class="main-img">
+                    <div class="badge badge-maroon">
+                        <span class="num">Rank 2</span>
+                        <span class="txt">India Athlete</span>
+                    </div>
+                </div>
+                <div class="tag-row">
+                    <span class="tag">UP Table Tennis Association</span>
                 </div>
             </div>
-            <div class="vp-credentials">
-                <span class="vp-tag">UP Table Tennis Association</span>
+
+            <div class="content-box">
+                <h4 class="mini-label" style="color:#630000">The Visionary</h4>
+                <h1 class="name">Anju <span>Shanker</span></h1>
+                <p class="role-bar" style="border-color:#630000">Vice Principal | National Athlete</p>
+                <div class="desc">
+                    <p>A powerhouse of discipline, <strong>Anju Shanker</strong> was a top-ranked Indian Table Tennis athlete. Having represented <strong>India in Korea</strong>, her vision has been the foundation of Aatreya Academy.</p>
+                </div>
+                <div class="meta-row">
+                    <div class="info-pts">
+                        <span><i class="fas fa-table-tennis"></i> International Player</span>
+                        <span><i class="fas fa-star"></i> School Pillar</span>
+                    </div>
+                    </div>
+                <div class="quote quote-orange">"Our vision is to build a foundation where discipline meets excellence."</div>
+            </div>
+        </div>
+    </section>
+    <!-- ANJU MAM -->
+
+    <!-- KD SIR -->
+    <section class="teacher-profile-sec">
+    <div class="teacher-container">
+        
+        <div class="teacher-visual">
+            <div class="t-image-frame">
+                <img src="images/kapil dev.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Kapil+Dev+Photo'" alt="Kapil Dev" class="t-img">
+                <div class="t-exp-badge">
+                    <span class="t-num">CHEMISTRY</span>
+                    <span class="t-txt">EXPERT</span>
+                </div>
+            </div>
+            <div class="t-tags">
+                <span class="t-tag">M.Sc</span>
+                <span class="t-tag">B.Ed</span>
+                <span class="t-tag">TET Qualified</span>
             </div>
         </div>
 
-        <div class="vp-bio">
-            <h4 class="vp-mini-head">THE VISIONARY</h4>
-            <h1 class="vp-name">Anju <span>Shanker</span></h1>
-            <p class="vp-role">Vice Principal | National Athlete</p>
+        <div class="teacher-info">
+            <h4 class="t-mini-head">ACADEMIC EXCELLENCE</h4>
+            <h1 class="t-name">Kapil <span>Dev</span></h1>
+            <p class="t-role">Senior Faculty | Chemistry Specialist</p>
             
-            <div class="vp-bio-text">
-                <p>A powerhouse of discipline and vision, <strong>Anju Shanker</strong> was a top-ranked Indian Table Tennis athlete (India Rank 2). Having represented <strong>India in Korea</strong>, she currently plays a pivotal role in the UP Table Tennis Association.</p>
-                <p>Her active participation since the school's inception has been the driving force behind the values and standards Aatreya Academy stands for today. Her vision is what made the school what it is today.</p>
+            <div class="t-bio">
+                <p>With a strong command over <strong>Physical, Organic, and Inorganic Chemistry</strong>, Kapil Dev sir is dedicated to simplifying complex reaction mechanisms. His methodology is strictly aligned with the <strong>CBSE curriculum and Bloom’s Taxonomy</strong>.</p>
             </div>
 
-            <div class="vp-meta">
-                <div class="vp-points">
-                    <span><i class="fas fa-table-tennis"></i> International Exposure</span>
-                    <span><i class="fas fa-star"></i> Foundation Pillar</span>
+            <div class="t-skills-grid">
+                <div class="t-skill-box">
+                    <h5><i class="fas fa-star"></i> STRENGTHS</h5>
+                    <ul>
+                        <li>Numerical Problem Solving</li>
+                        <li>Concept Simplification</li>
+                        <li>Board-Oriented Preparation</li>
+                        <li>Laboratory Safety Awareness</li>
+                    </ul>
+                </div>
+                <div class="t-skill-box">
+                    <h5><i class="fas fa-tools"></i> EXPERTISE</h5>
+                    <ul>
+                        <li>Lesson Planning (CBSE)</li>
+                        <li>Organic Reaction Mechanisms</li>
+                        <li>Assessment Tool Designing</li>
+                        <li>Scientific Mentoring</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="vp-quote">
-                "Our vision is to build a foundation where discipline meets excellence and every child finds their strength."
+            <div class="t-vision-quote">
+                "Simplifying the science of reactions to build a stronger foundation for the future."
             </div>
         </div>
 
     </div>
 </section>
-    <!-- VICE PRINCIPLE SECTION END -->
+    <!-- KD SIR -->
+
+
 </body>
 </html>
