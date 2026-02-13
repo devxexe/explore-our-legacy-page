@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Aatreya Academy</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="icon" type="image/x-icon" href="images/web-logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: #333; overflow-x: hidden; }
+
+        /* --- NAV BAR --- */
+        nav {
+            padding: 15px 8%;
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-logo { height: 75px; width: auto; object-fit: contain; }
+
+        /* --- PRINCIPAL SECTION --- */
+        .principal-legacy {
+            padding: 60px 8%;
+            min-height: calc(100vh - 85px);
+            display: flex;
+            align-items: center;
+        }
+
+        .legacy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        /* Left Side: Photo Frame */
+        .principal-visual { flex: 1; min-width: 350px; position: relative; }
+        
+        .image-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background: #f0f0f0; 
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .principal-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        .exp-badge {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            background: #ff8c00;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(255,140,0,0.3);
+            z-index: 5;
+        }
+        .exp-badge .num { font-size: 26px; font-weight: 800; display: block; line-height: 1; }
+        .exp-badge .txt { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        .credentials-bar { display: flex; gap: 12px; margin-top: 25px; justify-content: center; }
+        .tag {
+            background: #63000008;
+            color: #630000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1.5px solid #63000015;
+        }
+
+        /* Right Side: Content */
+        .principal-bio { flex: 1.4; min-width: 380px; }
+        .mini-head { color: #ff8c00; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; font-size: 14px; }
+        .principal-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #1a1a1a; line-height: 1; margin: 0; }
+        .principal-name span { color: #630000; }
+        .role { font-size: 1.2rem; color: #666; font-weight: 600; margin: 15px 0 30px 0; border-left: 4px solid #ff8c00; padding-left: 15px; }
+
+        .bio-text { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 30px; }
+        
+        .meta-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
+        
+        .philosophy-grid { display: flex; gap: 20px; }
+        .p-item { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333; font-size: 14px; }
+        .p-item i { color: #630000; }
+
+        .social-links { display: flex; gap: 15px; }
+        .social-btn {
+            width: 45px; height: 45px; border-radius: 50%; background: #630000; color: #fff;
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+            transition: 0.3s; font-size: 20px; box-shadow: 0 5px 15px rgba(99,0,0,0.2);
+        }
+        .social-btn:hover { background: #ff8c00; transform: translateY(-5px); box-shadow: 0 8px 20px rgba(255,140,0,0.3); }
+
+        .vision-quote {
+            background: #630000;
+            color: #fff;
+            padding: 35px;
+            border-radius: 25px;
+            font-size: 1.15rem;
+            font-style: italic;
+            line-height: 1.7;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(99,0,0,0.15);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .legacy-container { flex-direction: column; text-align: center; }
+            .role { border-left: none; border-top: 3px solid #ff8c00; padding: 15px 0 0 0; }
+            .meta-info { justify-content: center; }
+            .exp-badge { position: relative; display: inline-block; top: -40px; right: 0; }
+        }
+
+        /* --- VICE PRINCIPAL SECTION STYLES (No Clash) --- */
+.vp-leadership-sec {
+    padding: 100px 8%;
+    background-color: #fafafa; /* Light grey background for distinction */
+    border-top: 1px solid #eee;
+}
+
+.vp-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse; /* Desktop par image right side dikhegi */
+    align-items: center;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.vp-visual { flex: 1; min-width: 350px; position: relative; }
+
+.vp-image-frame {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    background: #630000;
+    aspect-ratio: 4/5;
+}
+
+.vp-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.vp-athlete-badge {
+    position: absolute;
+    bottom: 25px;
+    left: 25px; /* Inka badge left mein rakha hai for style change */
+    background: #630000;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(99,0,0,0.3);
+}
+.vp-rank { font-size: 24px; font-weight: 800; display: block; line-height: 1; }
+.vp-nation { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+.vp-credentials { display: flex; gap: 10px; margin-top: 25px; justify-content: center; }
+.vp-tag {
+    background: #ff8c0015;
+    color: #ff8c00;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1.5px solid #ff8c0030;
+}
+
+.vp-bio { flex: 1.4; min-width: 380px; }
+.vp-mini-head { color: #630000; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; font-size: 14px; }
+.vp-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #1a1a1a; line-height: 1.1; margin: 0; }
+.vp-name span { color: #ff8c00; }
+.vp-role { font-size: 1.2rem; color: #666; font-weight: 600; margin: 15px 0 30px 0; border-left: 4px solid #630000; padding-left: 15px; }
+
+.vp-bio-text { font-size: 1.1rem; color: #444; line-height: 1.8; margin-bottom: 30px; }
+
+.vp-meta { margin-bottom: 30px; }
+.vp-points { display: flex; gap: 25px; flex-wrap: wrap; }
+.vp-points span { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #333; font-size: 14px; }
+.vp-points i { color: #ff8c00; font-size: 18px; }
+
+.vp-quote {
+    background: #ff8c00;
+    color: #fff;
+    padding: 35px;
+    border-radius: 25px;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.7;
+    box-shadow: 0 20px 40px rgba(255,140,0,0.15);
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+    .vp-wrapper { flex-direction: column; text-align: center; }
+    .vp-role { border-left: none; border-top: 3px solid #630000; padding: 15px 0 0 0; }
+    .vp-points { justify-content: center; }
+    .vp-athlete-badge { position: relative; top: -40px; left: 0; display: inline-block; margin: 0 auto; }
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="images/dark-logo.png" alt="Aatreya Academy Logo" class="nav-logo">
+    </nav>
+
+    <!-- PRINCIPLE START -->
+    <section class="principal-legacy">
+        <div class="legacy-container">
+            
+            <div class="principal-visual">
+                <div class="image-frame">
+                    <img src="images/anindya shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Principal+Photo'" alt="Anindya Shanker" class="principal-img">
+                    <div class="exp-badge">
+                        <span class="num">11+</span>
+                        <span class="txt">Years exp</span>
+                    </div>
+                </div>
+                <div class="credentials-bar">
+                    <span class="tag">MBA</span>
+                    <span class="tag">IIM Indore Alumnus</span>
+                </div>
+            </div>
+
+            <div class="principal-bio">
+                <h4 class="mini-head">THE LEADERSHIP</h4>
+                <h1 class="principal-name">Anindya <span>Shanker</span></h1>
+                <p class="role">Principal & Chief Mentor | Psychology Specialist</p>
+                
+                <div class="bio-text">
+                    <p>Heading <strong>Aatreya Academy</strong> for the past 3 years, Anindya Shanker brings 11 years of rich experience in the education field. He is an advocate of <strong>Inclusive Teaching methods</strong> and has been deeply involved in mentoring kids through psychology.</p>
+                </div>
+
+                <div class="meta-info">
+                    <div class="philosophy-grid">
+                        <div class="p-item"><i class="fas fa-seedling"></i> Environmentalist</div>
+                        <div class="p-item"><i class="fas fa-brain"></i> Psychology Expert</div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/anindya-shanker-2018bb228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-btn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/shankeranindya/" class="social-btn" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-btn" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="vision-quote">
+                    "Kids need the <strong>right exposure</strong> rather than just a book. We focus on building character and minds for the future."
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- PRINCIPLE END -->
+
+    <!-- VICE PRINCIPLE SECTION START -->
+     <section class="vp-leadership-sec">
+    <div class="vp-wrapper">
+        
+        <div class="vp-visual">
+            <div class="vp-image-frame">
+                <img src="images/anju shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Vice+Principal+Photo'" class="vp-img">
+                <div class="vp-athlete-badge">
+                    <span class="vp-rank">Rank 2</span>
+                    <span class="vp-nation">India Athlete</span>
+                </div>
+            </div>
+            <div class="vp-credentials">
+                <span class="vp-tag">UP Table Tennis Association</span>
+            </div>
+        </div>
+
+        <div class="vp-bio">
+            <h4 class="vp-mini-head">THE VISIONARY</h4>
+            <h1 class="vp-name">Anju <span>Shanker</span></h1>
+            <p class="vp-role">Vice Principal | National Athlete</p>
+            
+            <div class="vp-bio-text">
+                <p>A powerhouse of discipline and vision, <strong>Anju Shanker</strong> was a top-ranked Indian Table Tennis athlete (India Rank 2). Having represented <strong>India in Korea</strong>, she currently plays a pivotal role in the UP Table Tennis Association.</p>
+                <p>Her active participation since the school's inception has been the driving force behind the values and standards Aatreya Academy stands for today. Her vision is what made the school what it is today.</p>
+            </div>
+
+            <div class="vp-meta">
+                <div class="vp-points">
+                    <span><i class="fas fa-table-tennis"></i> International Exposure</span>
+                    <span><i class="fas fa-star"></i> Foundation Pillar</span>
+                </div>
+            </div>
+
+            <div class="vp-quote">
+                "Our vision is to build a foundation where discipline meets excellence and every child finds their strength."
+            </div>
+        </div>
+
+    </div>
+</section>
+    <!-- VICE PRINCIPLE SECTION END -->
+</body>
+</html>
