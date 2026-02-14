@@ -3,376 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leadership | Aatreya Academy</title>
+    <title>Leadership & Faculty | Aatreya Academy</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/web-logo.png">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <style>
-        /* --- GLOBAL RESET --- */
+        :root {
+            --primary: #630000;
+            --secondary: #ff8c00;
+            --text: #1a1a1a;
+            --light: #fdfdfd;
+            --white: #ffffff;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Outfit', sans-serif; background-color: #ffffff; color: #333; overflow-x: hidden; }
+        body { font-family: 'Outfit', sans-serif; color: var(--text); overflow-x: hidden; scroll-behavior: smooth; background: var(--white); }
 
-        /* --- NAV BAR --- */
-        nav {
-            padding: 15px 5%;
-            background: #fff;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-logo { height: 75px; width: auto; object-fit: contain; }
+        nav { padding: 15px 5%; background: var(--white); box-shadow: 0 2px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; position: sticky; top: 0; z-index: 1000; }
+        .nav-logo { height: 70px; width: auto; }
 
-        /* --- SHARED SECTION STYLES --- */
-        .section-container {
-            padding: 80px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        .bg-alt { background-color: #fafafa; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .leader-sec { padding: 100px 8%; display: flex; align-items: center; min-height: 100vh; width: 100%; position: relative; }
+        .bg-light { background-color: #f8f9fa; }
 
-        /* --- IMAGE BOX STYLES --- */
-        .visual-box { flex: 1; min-width: 320px; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 60px; width: 100%; }
+
+        .visual-box { flex: 1; position: relative; width: 100%; }
+        .img-frame { position: relative; border-radius: 40px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.12); aspect-ratio: 4/5; background: #eee; border: 8px solid var(--white); }
+        .leader-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.5s ease; }
+        .img-frame:hover .leader-img { transform: scale(1.03); }
+
+        .badge { position: absolute; bottom: 25px; right: 25px; background: var(--secondary); color: var(--white); padding: 14px 22px; border-radius: 18px; text-align: center; font-weight: 800; font-size: 0.85rem; z-index: 5; box-shadow: 0 8px 20px rgba(0,0,0,0.15); line-height: 1.2; }
+
+        .info-box { flex: 1.5; width: 100%; }
+        .mini-title { color: var(--secondary); font-weight: 800; letter-spacing: 3px; font-size: 13px; text-transform: uppercase; margin-bottom: 15px; }
+        .name { font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 800; color: #1a1a1a; line-height: 1.1; margin-bottom: 10px; }
+        .name span { color: var(--primary); }
+        .role { font-size: 1.2rem; color: #666; font-weight: 600; margin-bottom: 20px; border-left: 5px solid var(--secondary); padding-left: 15px; }
         
-        .img-frame {
-            position: relative;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: #f0f0f0;
-            aspect-ratio: 4/5;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-        }
-        .main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        /* Fixed Icon Styling */
+        .social-links { display: flex; gap: 12px; margin-bottom: 25px; align-items: center; }
+        .social-links a { color: var(--text); font-size: 1.1rem; transition: 0.3s; background: #f0f0f0; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; border: 1px solid transparent; }
+        .social-links a:hover { background: var(--primary); color: var(--white); transform: translateY(-3px); box-shadow: 0 8px 15px rgba(99,0,0,0.2); }
 
-        /* Badges */
-        .badge {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            color: #fff;
-            padding: 12px 18px;
-            border-radius: 18px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 5;
-        }
-        .badge-maroon { background: #630000; }
-        .badge-orange { background: #ff8c00; }
-        .badge .num { font-size: 22px; font-weight: 800; display: block; line-height: 1; }
-        .badge .txt { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Tags Below Image */
-        .tag-row { display: flex; gap: 10px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
-        .tag {
-            background: #fff;
-            color: #630000;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            border: 1px solid #63000020;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-
-        /* --- CONTENT STYLES --- */
-        .content-box { flex: 1.2; min-width: 320px; }
-        .mini-label { color: #ff8c00; font-weight: 800; letter-spacing: 2px; font-size: 13px; margin-bottom: 10px; text-transform: uppercase; }
-        .name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #1a1a1a; line-height: 1.1; }
-        .name span { color: #630000; }
-        .role-bar { 
-            font-size: 1.1rem; color: #666; font-weight: 600; 
-            margin: 15px 0 25px 0; border-left: 4px solid #ff8c00; padding-left: 15px; 
-        }
-
-        .desc { font-size: 1.05rem; color: #444; line-height: 1.7; margin-bottom: 25px; }
+        .bio { font-size: 1.15rem; line-height: 1.8; color: #444; margin-bottom: 30px; }
+        .bio b { color: #000; font-weight: 700; }
         
-        /* Icons Row */
-        .meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
-        .info-pts { display: flex; gap: 15px; font-weight: 700; font-size: 14px; }
-        .info-pts i { color: #630000; }
+        .vision-quote { background: var(--primary); color: var(--white); padding: 35px; border-radius: 30px; font-style: italic; font-size: 1.1rem; border-left: 10px solid var(--secondary); box-shadow: 0 15px 35px rgba(99,0,0,0.15); margin-top: 20px; }
 
-        .social { display: flex; gap: 12px; }
-        .s-btn {
-            width: 40px; height: 40px; border-radius: 50%; background: #630000; color: #fff;
-            display: flex; align-items: center; justify-content: center; text-decoration: none;
-            transition: 0.3s; font-size: 18px;
+        .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: #fff; padding: 25px; border-radius: 25px; border: 1px solid #eee; margin-bottom: 30px; }
+        .skill-group h5 { color: var(--primary); margin-bottom: 12px; font-size: 14px; text-transform: uppercase; font-weight: 800; }
+        .skill-group ul { list-style: none; }
+        .skill-group li { font-size: 13px; color: #555; margin-bottom: 8px; padding-left: 20px; position: relative; font-weight: 500; }
+        .skill-group li::before { content: "✓"; color: var(--secondary); position: absolute; left: 0; font-weight: bold; }
+
+        .row-reverse { flex-direction: row-reverse; }
+
+        @media (max-width: 991px) {
+            .leader-sec { padding: 60px 20px; height: auto; display: block; }
+            .container { flex-direction: column !important; gap: 40px; text-align: center; }
+            .visual-box { max-width: 380px; margin: 0 auto; }
+            .role { border-left: none; border-top: 4px solid var(--secondary); padding: 15px 0 0; display: inline-block; width: 100%; }
+            .badge { position: relative; bottom: auto; right: auto; margin: -35px auto 10px auto; width: fit-content; display: block; }
+            .skills-container { grid-template-columns: 1fr; text-align: left; }
+            .social-links { justify-content: center; }
+            .vision-quote { text-align: left; }
         }
-        .s-btn:hover { background: #ff8c00; transform: translateY(-3px); }
-
-        .quote {
-            background: #630000; color: #fff; padding: 25px; border-radius: 20px;
-            font-size: 1.1rem; font-style: italic; line-height: 1.6;
-        }
-        .quote-orange { background: #ff8c00; }
-
-        /* --- MOBILE RESPONSIVE FIXES --- */
-        @media (max-width: 768px) {
-            nav { padding: 10px; }
-            .nav-logo { height: 50px; }
-            .section-container { padding: 40px 5%; }
-            .wrapper { flex-direction: column !important; text-align: center; gap: 30px; }
-            
-            .img-frame { max-width: 280px; border-radius: 20px; }
-            .name { font-size: 2.2rem; }
-            .role-bar { border-left: none; border-top: 3px solid #ff8c00; padding: 10px 0 0 0; }
-            
-            .meta-row { justify-content: center; }
-            .info-pts { flex-direction: column; gap: 8px; }
-            .quote { padding: 20px; font-size: 1rem; }
-        }
-        /* ANJU MAM END */
-
-/* KD SIR START */
-.teacher-profile-sec {
-    padding: 60px 8%;
-    background: #fff;
-}
-
-.teacher-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex; /* Ye photo aur text ko side-by-side layega */
-    align-items: flex-start;
-    gap: 50px;
-}
-
-/* Left Visuals */
-.teacher-visual {
-    flex: 1; /* 1 part space for photo */
-    min-width: 320px;
-}
-
-.t-image-frame {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    aspect-ratio: 4/5;
-    background: #f0f0f0;
-}
-
-.t-img { width: 100%; height: 100%; object-fit: cover; }
-
-.t-exp-badge {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: #ff8c00;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 15px;
-    text-align: center;
-}
-.t-num { font-size: 18px; font-weight: 800; display: block; }
-.t-txt { font-size: 9px; letter-spacing: 1px; }
-
-.t-tags { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
-.t-tag { background: #63000008; color: #630000; padding: 8px 15px; border-radius: 50px; font-size: 12px; font-weight: 700; border: 1px solid #63000015; }
-
-/* Right Details */
-.teacher-info {
-    flex: 1.5; /* 1.5 parts space for text */
-}
-
-.t-mini-head { color: #ff8c00; letter-spacing: 3px; font-size: 12px; margin-bottom: 10px; font-weight: 800; }
-.t-name { font-size: 3.5rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
-.t-name span { color: #630000; }
-.t-role { font-size: 1.1rem; color: #666; font-weight: 600; margin: 15px 0; border-left: 4px solid #ff8c00; padding-left: 15px; }
-
-.t-bio { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 25px; }
-
-/* Skills Grid Fix */
-.t-skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    background: #fdfdfd;
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid #eee;
-}
-
-.t-skill-box h5 { color: #630000; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.t-skill-box ul { list-style: none; }
-.t-skill-box li { font-size: 13px; color: #555; margin-bottom: 6px; padding-left: 15px; position: relative; }
-.t-skill-box li::before { content: "•"; color: #ff8c00; position: absolute; left: 0; font-weight: bold; }
-
-.t-vision-quote {
-    margin-top: 30px;
-    background: #630000;
-    color: #fff;
-    padding: 25px;
-    border-radius: 20px;
-    font-style: italic;
-    font-size: 1.1rem;
-}
-
-/* Mobile Responsive */
-@media (max-width: 992px) {
-    .teacher-container { flex-direction: column; text-align: center; }
-    .t-role { border-left: none; border-top: 3px solid #ff8c00; padding: 15px 0 0; }
-    .t-skills-grid { grid-template-columns: 1fr; text-align: left; }
-}
-/* KD SIR END */
-
-
     </style>
 </head>
 <body>
 
-    <nav>
-        <img src="images/dark-logo.png" alt="Aatreya Logo" class="nav-logo">
-    </nav>
+    <nav><img src="images/dark-logo.png" alt="Aatreya Academy" class="nav-logo"></nav>
 
-    <!-- ANINDYA SIR -->
-    <section class="section-container">
-        <div class="wrapper">
+    <section class="leader-sec bg-light" data-aos="fade-up">
+        <div class="container">
             <div class="visual-box">
                 <div class="img-frame">
-                    <img src="images/anindya shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Principal'" class="main-img">
-                    <div class="badge badge-orange">
-                        <span class="num">11+</span>
-                        <span class="txt">Years Exp</span>
-                    </div>
+                    <img src="images/anju shanker.jpeg" loading="lazy" class="leader-img">
                 </div>
-                <div class="tag-row">
-                    <span class="tag">MBA</span>
-                    <span class="tag">IIM Indore Alumnus</span>
-                </div>
+                <div class="badge">RANK 2<br>INDIA ATHLETE</div>
             </div>
-
-            <div class="content-box">
-                <h4 class="mini-label">The Leadership</h4>
-                <h1 class="name">Anindya <span>Shanker</span></h1>
-                <p class="role-bar">Principal & Chief Mentor | Psychology Specialist</p>
-                <div class="desc">
-                    <p>Heading <strong>Aatreya Academy</strong> for the past 3 years, Anindya Shanker brings 11 years of rich experience. He is an advocate of inclusive teaching and deeply involved in mentoring kids.</p>
-                </div>
-                <div class="meta-row">
-                    <div class="info-pts">
-                        <span><i class="fas fa-leaf"></i> Environmentalist</span>
-                        <span><i class="fas fa-brain"></i> Psychology Expert</span>
-                    </div>
-                    <div class="social">
-                        <a href="https://www.linkedin.com/in/anindya-shanker-2018bb228" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/shankeranindya/" class="s-btn"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="quote">"Kids need the right exposure rather than just a book. We focus on building character."</div>
-            </div>
-        </div>
-    </section>
-    <!-- ANINDYA SIR -->
-
-    <!-- ANJU MAM -->
-    <section class="section-container bg-alt">
-        <div class="wrapper" style="flex-direction: row-reverse;">
-            <div class="visual-box">
-                <div class="img-frame">
-                    <img src="images/anju shanker.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Vice+Principal'" class="main-img">
-                    <div class="badge badge-maroon">
-                        <span class="num">Rank 2</span>
-                        <span class="txt">India Athlete</span>
-                    </div>
-                </div>
-                <div class="tag-row">
-                    <span class="tag">UP Table Tennis Association</span>
-                </div>
-            </div>
-
-            <div class="content-box">
-                <h4 class="mini-label" style="color:#630000">The Visionary</h4>
+            <div class="info-box">
+                <h4 class="mini-title">The Foundation</h4>
                 <h1 class="name">Anju <span>Shanker</span></h1>
-                <p class="role-bar" style="border-color:#630000">Vice Principal | National Athlete</p>
-                <div class="desc">
-                    <p>A powerhouse of discipline, <strong>Anju Shanker</strong> was a top-ranked Indian Table Tennis athlete. Having represented <strong>India in Korea</strong>, her vision has been the foundation of Aatreya Academy.</p>
+                <p class="role">Vice Principal | National Athlete</p>
+                <div class="bio">
+                    Anju Shanker represents the <b>spirit of discipline</b> at Aatreya Academy. As a former <b>India Rank 2 Table Tennis athlete</b> who represented the nation in <b>Korea</b>, her vision has shaped the school's standards since day one.
                 </div>
-                <div class="meta-row">
-                    <div class="info-pts">
-                        <span><i class="fas fa-table-tennis"></i> International Player</span>
-                        <span><i class="fas fa-star"></i> School Pillar</span>
-                    </div>
-                    </div>
-                <div class="quote quote-orange">"Our vision is to build a foundation where discipline meets excellence."</div>
+                <div class="vision-quote" style="background: var(--secondary);">
+                    "Our vision is to build a foundation where <b>discipline meets excellence</b>."
+                </div>
             </div>
         </div>
     </section>
-    <!-- ANJU MAM -->
 
-    <!-- KD SIR -->
-    <section class="teacher-profile-sec">
-    <div class="teacher-container">
-        
-        <div class="teacher-visual">
-            <div class="t-image-frame">
-                <img src="images/kapil dev.jpeg" onerror="this.src='https://via.placeholder.com/500x650?text=Kapil+Dev+Photo'" alt="Kapil Dev" class="t-img">
-                <div class="t-exp-badge">
-                    <span class="t-num">CHEMISTRY</span>
-                    <span class="t-txt">EXPERT</span>
+    <section class="leader-sec" data-aos="fade-up">
+        <div class="container row-reverse">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/anindya shanker.jpeg" loading="lazy" class="leader-img">
                 </div>
+                <div class="badge" style="background: var(--primary);">IIM INDORE<br>ALUMNUS</div>
             </div>
-            <div class="t-tags">
-                <span class="t-tag">M.Sc</span>
-                <span class="t-tag">B.Ed</span>
-                <span class="t-tag">TET Qualified</span>
+            <div class="info-box">
+                <h4 class="mini-title">The Leadership</h4>
+                <h1 class="name">Anindya <span>Shanker</span></h1>
+                <p class="role">Principal & Chief Mentor</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="bio">
+                    An <b>IIM Indore Alumnus</b> and <b>Psychology specialist</b>, Anindya Shanker brings <b>11+ years</b> of educational expertise. He focuses on <b>inclusive teaching methods</b> and mentoring children through psychological growth.
+                </div>
+                <div class="vision-quote">
+                    "Kids need the <b>right exposure</b> rather than just a book. We focus on <b>building character</b>."
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="teacher-info">
-            <h4 class="t-mini-head">ACADEMIC EXCELLENCE</h4>
-            <h1 class="t-name">Kapil <span>Dev</span></h1>
-            <p class="t-role">Senior Faculty | Chemistry Specialist</p>
-            
-            <div class="t-bio">
-                <p>With a strong command over <strong>Physical, Organic, and Inorganic Chemistry</strong>, Kapil Dev sir is dedicated to simplifying complex reaction mechanisms. His methodology is strictly aligned with the <strong>CBSE curriculum and Bloom’s Taxonomy</strong>.</p>
-            </div>
-
-            <div class="t-skills-grid">
-                <div class="t-skill-box">
-                    <h5><i class="fas fa-star"></i> STRENGTHS</h5>
-                    <ul>
-                        <li>Numerical Problem Solving</li>
-                        <li>Concept Simplification</li>
-                        <li>Board-Oriented Preparation</li>
-                        <li>Laboratory Safety Awareness</li>
-                    </ul>
+    <section class="leader-sec bg-light" data-aos="fade-up">
+        <div class="container">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/kapil dev.jpeg" loading="lazy" class="leader-img">
                 </div>
-                <div class="t-skill-box">
-                    <h5><i class="fas fa-tools"></i> EXPERTISE</h5>
-                    <ul>
-                        <li>Lesson Planning (CBSE)</li>
-                        <li>Organic Reaction Mechanisms</li>
-                        <li>Assessment Tool Designing</li>
-                        <li>Scientific Mentoring</li>
-                    </ul>
-                </div>
+                <div class="badge">M.SC, B.ED<br>CHEMISTRY EXPERT</div>
             </div>
-
-            <div class="t-vision-quote">
-                "Simplifying the science of reactions to build a stronger foundation for the future."
+            <div class="info-box">
+                <h4 class="mini-title">Academic Excellence</h4>
+                <h1 class="name">Kapil <span>Dev</span></h1>
+                <p class="role">Senior Faculty | Core Chemistry Mentor</p>
+                <div class="bio">
+                    With a strong command over <b>Physical, Organic, and Inorganic Chemistry</b>, Kapil Dev sir is dedicated to simplifying <b>complex reaction mechanisms</b>. His teaching focuses on <b>board-oriented preparation</b>.
+                </div>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h5>Specialization</h5>
+                        <ul><li><b>Organic Mechanisms</b></li><li><b>Numerical Expertise</b></li></ul>
+                    </div>
+                    <div class="skill-group">
+                        <h5>Methodology</h5>
+                        <ul><li><b>Bloom's Taxonomy</b></li><li><b>Scientific Mentoring</b></li></ul>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
-    <!-- KD SIR -->
+    <section class="leader-sec" data-aos="fade-up">
+        <div class="container row-reverse">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/abhishek sir.jpeg" loading="lazy" class="leader-img">
+                </div>
+                <div class="badge" style="background: var(--primary);">CTET<br>QUALIFIED</div>
+            </div>
+            <div class="info-box">
+                <h4 class="mini-title">Language & Awareness</h4>
+                <h1 class="name">Abhishek <span>Shukla</span></h1>
+                <p class="role">Senior English Faculty | Classes 9th - 12th</p>
+                <div class="bio">
+                    His core strength lies in <b>bridging the gap</b> between academic theory and <b>real-world application</b>. He ensures <b>deep clarity of concepts</b> and encourages students to stay informed.
+                </div>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h5>Academic</h5>
+                        <ul><li><b>M.A. English (RMLAU)</b></li><li><b>B.Ed & D.El.Ed</b></li></ul>
+                    </div>
+                    <div class="skill-group">
+                        <h5>Certifications</h5>
+                        <ul><li><b>CTET Qualified</b></li><li><b>Communication Specialist</b></li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="leader-sec bg-light" data-aos="fade-up">
+        <div class="container">
+            <div class="visual-box">
+                <div class="img-frame">
+                    <img src="images/rajneesh sir.jpeg" loading="lazy" class="leader-img">
+                </div>
+                <div class="badge">MA, B.ED<br>ENGLISH COACH</div>
+            </div>
+            <div class="info-box">
+                <h4 class="mini-title">Creative Pedagogy</h4>
+                <h1 class="name">Rajneesh <span>Tripathi</span></h1>
+                <p class="role">English Teacher | Storyteller</p>
+                <div class="bio">
+                    Rajneesh sir is the <b>conductor of a living symphony</b>. He uses <b>humor</b> as his most powerful tool to ignite a spark. His <b>jolly nature</b> builds a bridge to students’ hearts.
+                </div>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h5>Qualifications</h5>
+                        <ul><li><b>M.A. in English</b></li><li><b>Bachelor of Education</b></li></ul>
+                    </div>
+                    <div class="skill-group">
+                        <h5>Core Strengths</h5>
+                        <ul><li><b>Creative Storytelling</b></li><li><b>Personality Coaching</b></li></ul>
+                    </div>
+                </div>
+                <div class="vision-quote" style="background: var(--secondary);">
+                    "If I can make them <b>laugh</b>, I can make them <b>learn</b>. I create an <b>experience</b>."
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 900, once: true, offset: 120 });
+    </script>
 </body>
 </html>
